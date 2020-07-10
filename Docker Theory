@@ -1,5 +1,12 @@
 Docker Engine - Docker engine allows us to  allows us to develop,assemble,ship and run applications.It has 3 main components.
 docker is a container runtime and orchestration engine
+Docker uses client server architecture.
+Client talks to daemon. here client is cli user who is running commands.
+Daemon does all heavy work like Building, running and distributing
+
+Both client and daemon communicate through Rest API by using Unix sockets and network interface.
+For example : Dockerd is a daemon which manages objects like images, container,networks and volume
+
 a) Docker Daemon - A persistent background process that manages docker images,containers,networks and storage volumes. The docker daemon constantly listens for Docker API request and processes them.
 b) Docker REST API - An API used by applications to interact with Docker daemon. It can be accessed by an HTTP client.
 c) Docker CLI - A command line interface for interacting docker daemon.
@@ -27,4 +34,4 @@ docker export nginx_prod nginx.tar
 19) docker import <tar file name> <image name>
 20) Apache defualt location - /var/www/html
 21) Mysql default location - /var/lib/mysql
-22) 
+
