@@ -1,0 +1,5 @@
+Docker Engine - Docker engine allows us to  allows us to develop,assemble,ship and run applications.It has 3 main components.
+a) Docker Daemon - A persistent background process that manages docker images,containers,networks and storage volumes. The docker daemon constantly listens for Docker API request and processes them.
+b) Docker REST API - An API used by applications to interact with Docker daemon. It can be accessed by an HTTP client.
+c) Docker CLI - A command line interface for interacting docker daemon.
+
