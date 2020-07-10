@@ -43,3 +43,31 @@ docker export nginx_prod nginx.tar
 20) Apache defualt location - /var/www/html
 21) Mysql default location - /var/lib/mysql
 
+Docker Network
+==============
+Network drivers: Bridge(default),host,overlay,macvlan,none
+
+Bridge : provides layer of isolation between container.
+Host : It works only on linux.
+Overlay : useful in distributed system among  multiple docker in diff network .
+macvlan : assigns mac address to container which works as physical device.
+none : none used when you want to disable networking for container.We cannot use none driver with docker swarm service.
+
+Commands :
+============
+docker network ls
+docker network inspect (network name)
+docker network create (network name)
+docker network rm (n/w name)
+docker network connect (n/w name ) (container name)
+docker network disconnect n/w name ) (container name)
+
+Create a network with subnet and gateway and driver 
+----
+docker network create --subnet 10.0.1.2/24 --gateway 10.0.1.3 -d bridge br000
+
+assign an IP to container
+--------
+docker run -it -name prodngx --network br00 --ip 10.2.4.56 centos /bin/bash
+
+
