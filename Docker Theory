@@ -1,15 +1,23 @@
-Docker Engine - Docker engine allows us to  allows us to develop,assemble,ship and run applications.It has 3 main components.
-docker is a container runtime and orchestration engine
+Docker Engine - Docker engine allows us to develop,assemble,ship and run applications.docker is a container runtime and orchestration engine .
 Docker uses client server architecture.
 Client talks to daemon. here client is cli user who is running commands.
-Daemon does all heavy work like Building, running and distributing
-
+Daemon does all heavy work like Building, running and distributing. 
 Both client and daemon communicate through Rest API by using Unix sockets and network interface.
 For example : Dockerd is a daemon which manages objects like images, container,networks and volume
 
 a) Docker Daemon - A persistent background process that manages docker images,containers,networks and storage volumes. The docker daemon constantly listens for Docker API request and processes them.
 b) Docker REST API - An API used by applications to interact with Docker daemon. It can be accessed by an HTTP client.
 c) Docker CLI - A command line interface for interacting docker daemon.
+
+Docker Images
+----------------
+Docker images are templates for containers. They are class in OOPs language.
+We can use image to create an instance of container.
+
+When a container gets created with image template it creates Image layer which is readonly .
+Later as we add the things i.e libraries then it creates container layer which is read and write layer.
+When we delete the container it deletes container layer and hence base image which was read only will always be there.
+So we can say container is nothing but runtime image .
 
 Commands :
 1)	To know version of docker : docker - - version 
