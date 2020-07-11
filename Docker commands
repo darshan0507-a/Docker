@@ -40,3 +40,29 @@ assign an IP to container
 --------
 docker run -it -name prodngx --network br00 --ip 10.2.4.56 -p 8080:80 centos /bin/bash
 
+Docker Volume
+===============
+
+docker volume ls
+docker volume create (volume name )
+docker volume inspect (volume name)
+docker volume rm (volume name)
+docker volume prune (it will delete all volume which is not linked with any container)
+
+command to perform bind mount flag
+-----
+docker run -it --name bind-container-nginx --mount type=bind,source=/home/ubuntu/create-new,target=(target path) nginx
+
+command to perform Bind mount by using volume flag
+-------
+docker run -itd --name nginx-volume-mount1—volume /home/cloud_user/target:/app nginx:latest
+
+How to change Storage driver
+=================================
+vi /etc/docker/daemon.json
+This will create a new file and there we will add following json statement
+{
+“storage-driver” : “devicemapper”
+}
+Systemctl restart docker
+Docker info – this should display new storage driver.
