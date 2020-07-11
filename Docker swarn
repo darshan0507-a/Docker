@@ -1,0 +1,33 @@
+
+Swarm has two major components:
+•	An enterprise grade secure cluster:
+o	Manage one or more Docker nodes as a cluster
+o	Encrypted distributed cluster store
+o	Encrypted networks
+o	Secure join tokens
+•	An orchestration engine for creating mircoservices:
+o	API for deploying and managing microservices
+o	Declarative manifest files for defining apps
+o	Provides availability to scale apps, and perform rolling updates and rollbacks
+Swarm was initially a separate product layered on Docker, since Docker 1.12 it has become a part of the engine.
+The Cluster
+•	A swarm consists of one or more Docker nodes.
+•	Nodes are either a managers or a worker.
+•	Managers:
+o	Manage the state of the cluster
+o	Dispatch tasks to workers
+•	Workers:
+o	Accepts and execute tasks
+•	State is held in etcd
+•	Swarm uses Transport Layer Security (TLS):
+o	Encrypted communication
+o	Authenticated nodes
+o	Authorized roles
+Orchestration
+•	The atomic unit of scheduling is a swarm service.
+•	The service construct adds the following to a container:
+o	scaling
+o	rolling updates
+o	rollback
+o	updates
+•	A container wrapped in a service is a task or a replica.
