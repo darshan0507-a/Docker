@@ -30,5 +30,85 @@ macvlan : assigns mac address to container which works as physical device.
 none : none used when you want to disable networking for container.We cannot use none driver with docker swarm service.
 
 
+Docker Storage
+===============
+Two types of docker storage 
+a) Non persistent
+b) Persistent
+ Non persistent: data is short lived .eg : application code .Every container has it which is R/W layer of container.
+Persistent: data will be there even if container deleted.its basically uses local storage.
+location in linux :/var/lib/docker/name of storage driver
+/var/lib/docker/bridge
+
+Extra theory on Storage:
+=========================
+Categories of data storage:
+•	Non-persistent
+o	Local storage
+o	Data that is ephemeral
+o	Every container has it
+o	Tied to the lifecycle of the contain
+•	Persistent
+o	Volumes
+	Volumes are decoupled from containers
+Non-persistent Data
+Non-persistent data:
+•	By default all container use local storage
+•	Storage locations:
+o	Linux: /var/lib/docker/[STORAGE-DRIVER]/
+o	Windows: C:\ProgramData\Docker\windowsfilter\
+Storage Drivers:
+•	RHEL uses overlay2.
+•	Ubuntu uses overlay2 or aufs.
+•	SUSE uses btrfs.
+•	Windows uses its own.
+
+Persistent Data Using Volumes
+Volumes:
+•	Use a volume for persistent data:
+o	Create the volume first, then create your container.
+•	Mounted to a directory in the container
+•	Data is written to the volume
+•	Deleting a container does not delete the volume
+•	First-class citizens
+•	Uses the local driver
+•	Third party drivers:
+o	Block storage
+o	File storage
+o	Object storage
+•	Storage locations:
+o	Linux: /var/lib/docker/volumes/
+o	Windows: C:\ProgramData\Docker\volumes
+
+
+
+
+There types of volume storage
+-----
+a) Block storage - high performance
+b) file storage: NFS, High perf
+c) Object storage: large data blobs 
+
+default driver name is local when we create a volume.
+
+Bind Mounts : Bind mounts have been around since the early days of Docker. They have limited functionality compared to volumes. 
+With bind mount, a file or directory on the host machine is mounted into a container. Example: using configuration files to mount data on container.
+Volume Mounts:  Volumes use a new directory (/var/lib/docker/volumes) that is created within Docker’s storage directory on the host machine, and Docker manages that directory’s contents.
+
+Using Volumes for Persistent Storage
+========================================
+
+Volumes are easier to back up or migrate than bind mounts. You can manage volumes using Docker CLI commands or the Docker API. They work on both Linux and Windows containers. Volumes can be more safely shared among multiple containers. Volume drivers allow for:
+•	Storing volumes on remote hosts or cloud providers
+•	Encrypting the contents of volumes
+•	Add other functionality
+New volumes can have their content pre-populated by a container.
+
+
+Selecting a Storage Driver
+==========================
+Storage drivers provide a pluggable framework for managing the temporary internal storage of a containers writeable layers.
+Overlay2 - File based storage . Default for Ubuntu and Centos8+.
+Device Mapper- Block storage, more effiecnt for doing lot of writes. Default for Centos 7 and earlier.
 
 
