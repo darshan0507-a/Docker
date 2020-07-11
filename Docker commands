@@ -1,0 +1,42 @@
+Commands :
+1)	To know version of docker : docker - - version 
+2)	To know version of client and server : docker version (without hyphens)
+3)	To know if image is available in Docker hub : docker search  <image name > , docker search centos 
+4)	To know details about Linux distribution OS : cat /etc/*-release
+5)  Running a docker container - docker run -itd --name nginx_prod -p 8080:80 nginx:latest
+6)  List docker images - docker image ls
+7)  Default data location for nginx : /usr/share/nginx/html
+8) To pause container : docker pause <container name>
+9) TO unpause container : docker unpause <container name>
+10) To stop/remove all containers : docker stop $(docker ps -aq) , docker rm $(docker ps -aq)
+11) To check memort stats : docker stats
+12) docker layers : docker history nginx:latest
+13) command to check which process is using more memory : ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem | head
+14) To create image from container : docker commit <container name > <arbitrary name for image>
+15) Push the image to docker hub - docker push <image name >
+16) Pull docker image - docker pull <image name>
+17) create zip file to save image -  docker export <container name> -o <zipname>.tar
+docker export nginx_prod nginx.tar
+18) docker logs <container name>
+19) docker import <tar file name> <image name>
+20) Apache defualt location - /var/www/html
+21) Mysql default location - /var/lib/mysql
+
+Docker Network commands
+========================
+
+docker network ls
+docker network inspect (network name)
+docker network create (network name)
+docker network rm (n/w name)
+docker network connect (n/w name ) (container name)
+docker network disconnect n/w name ) (container name)
+
+Create a network with subnet and gateway and driver 
+----
+docker network create --subnet 10.0.1.2/24 --gateway 10.0.1.3 -d bridge br000
+
+assign an IP to container
+--------
+docker run -it -name prodngx --network br00 --ip 10.2.4.56 -p 8080:80 centos /bin/bash
+
